@@ -8,8 +8,8 @@ function updateCalculation(value) {
 }
 
 function back() {
-  calculation = calculation.substring(0, calculation.length - 1);
   console.log(calculation);
+  calculation = calculation.substring(0, calculation.length - 1);
   displayCalculation();
   localStorage.setItem('calculation', calculation);
 }
@@ -20,6 +20,7 @@ document.querySelector('.calculation')
 }
 
 document.body.addEventListener('keydown', (event) => {
+  console.log(event.key);
   if (isNaN(event.key) === false) {
     updateCalculation(event.key);
   } else if (event.key === '+') {
@@ -34,10 +35,10 @@ document.body.addEventListener('keydown', (event) => {
   } else if (event.key === '.') {
     updateCalculation('.');
   } else if (event.key === '=') {
-    calculation = eval(calculation);
+    calculation = eval(calculation).toString();
     displayCalculation();
   } else if (event.key === 'Enter') {
-    calculation = eval(calculation);
+    calculation = eval(calculation).toString();
     displayCalculation();
   } else if (event.key === 'Backspace') {
     back();
